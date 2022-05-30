@@ -1,0 +1,336 @@
+backend:
+  name: git-gateway
+  branch: develop
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
+
+local_backend: true
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/pages/sme.md"
+        label: "SME"
+        name: "sme"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "sme-page",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+  - name: "corporate-insurance"
+    label: "Corporate Insurance"
+    files:
+      - file: "src/pages/corporate-insurance/fire-and-burglary-insurance.md"
+        label: "Fire & Burglary Insurance"
+        name: "fire-and-burglary-insurance"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "fbi-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/group-health-insurance.md"
+        label: "Group Health Insurance"
+        name: "group-health-insurance"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "ghi-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/covid-19-group-health-plan.md"
+        label: "COVID-19 Group Health Plan"
+        name: "covid-19-group-health-plan"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "cghp-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/office-package-policy.md"
+        label: "Office Package Policy"
+        name: "office-package-policy"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "opp-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/shop-owner-insurance.md"
+        label: "Shop Owner Insurance"
+        name: "shop-owner-insurance"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "soi-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/group-personal-accident.md"
+        label: "Group Personal Accident"
+        name: "group-personal-accident"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "gpa-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/group-term-life.md"
+        label: "Group Term Life"
+        name: "group-term-life"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "gtl-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/directors-and-officers-liability.md"
+        label: "Directors & Officers Liability"
+        name: "directors-and-officers-liability"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "dol-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/general-liability.md"
+        label: "General Liability"
+        name: "general-liability"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "gl-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/professional-indemnity.md"
+        label: "Professional Indemnity"
+        name: "professional-indemnity"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "pi-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/workmen-compensation.md"
+        label: "Workmen Compensation"
+        name: "workmen-compensation"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "wc-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/erection-all-risk.md"
+        label: "Erection All Risk"
+        name: "erection-all-risk"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "ear-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/construction-all-risk.md"
+        label: "Construction All Risk"
+        name: "construction-all-risk"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "car-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/contractors-plant-and-machinery.md"
+        label: "Contractor's Plant & Machinery"
+        name: "contractors-plant-and-machinery"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "cpm-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/cyber-risk-insurance.md"
+        label: "Cyber Risk Insurance"
+        name: "cyber-risk-insurance"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "cri-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
+      - file: "src/pages/corporate-insurance/marine-insurance.md"
+        label: "Marine Insurance"
+        name: "marine-insurance"
+        fields:
+          - {
+            label: "Template Key",
+            name: "templateKey",
+            widget: "hidden",
+            default: "mi-page",
+          }
+          - {
+            label: "Corporate Insurance Type",
+            name: "collectionType",
+            widget: "hidden",
+            default: "corporate-insurance",
+          }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }
