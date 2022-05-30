@@ -5,4 +5,5 @@ collectionType: corporate-insurance
 title: Group Personal Accident
 image: /img/gpa-iconv2.svg
 alt: Group Personal Accident
+tags: [one]
 ---

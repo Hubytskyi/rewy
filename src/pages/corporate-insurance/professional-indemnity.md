@@ -5,4 +5,5 @@ collectionType: corporate-insurance
 title: Professional Indemnity
 image: /img/pi-iconv2.svg
 alt: Professional Indemnity
+tags: [four]
 ---

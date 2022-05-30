@@ -5,4 +5,5 @@ collectionType: corporate-insurance
 title: Construction All Risk
 image: /img/car-iconv2.svg
 alt: Construction All Risk
+tags: [one, two, three, four, five]
 ---

@@ -6,7 +6,6 @@ const styles = {
     alignItems: 'center',
     cursor: 'pointer',
     width: {
-      xs: 'calc(50% - 24px)',
       md: 175
     },
 

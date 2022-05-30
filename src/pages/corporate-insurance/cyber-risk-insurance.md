@@ -5,4 +5,5 @@ collectionType: corporate-insurance
 title: Cyber Risk Insurance
 image: /img/ci-iconv2.svg
 alt: Cyber Risk Insurance
+tags: [one, five]
 ---
