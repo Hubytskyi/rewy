@@ -3,24 +3,24 @@ import bgImage from '../assets/images/home-page.svg';
 
 const styles = {
   section: {
-    height: {
-      xs: `calc(100vh - 50px)`,
-      lg: `calc(100vh - 78px)`,
-    },
     backgroundColor: theme.palette.grey["200"],
     display: 'flex',
-    flexGrow: '1',
     padding: {
-      xs: '32px 0',
-      md: 8,
+      xs: '140px 0',
+      md: '140px 64px 64px',
     },
     backgroundImage: `url(${bgImage})`,
     backgroundPosition: 'top -75px right -180px',
     backgroundRepeat: 'no-repeat',
   },
 
-  title: {
+  titleWrapper: {
     marginBottom: 5,
+  },
+
+  title: {
+    fontFamily: 'Roboto',
+    fontSize: '1.5rem',
   }
 }
 

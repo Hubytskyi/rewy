@@ -157,6 +157,9 @@ ul, li {
         family: $font-family;
         weight: 800;
     };
+    &.gmc {
+        font-family: $roboto;
+    }
 }
 p {
     color: $optional-color;
