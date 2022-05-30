@@ -5,4 +5,5 @@ collectionType: corporate-insurance
 title: Group Term Life
 image: /img/gtl-iconv2.svg
 alt: Group Term Life
+tags: [five]
 ---
