@@ -1,4 +1,12 @@
 const styles = {
+  section: {
+    display: 'flex',
+    flexDirection: {
+      xs: 'column',
+      md: 'row'
+    }
+  },
+
   wrapper: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -16,25 +24,6 @@ const styles = {
       md: 'auto'
     }
   },
-
-  tags: {
-    display: 'flex',
-    padding: '16px 0',
-    overflowX: 'auto'
-  },
-
-  tag: {
-    marginRight: '20px',
-    cursor: 'pointer',
-    color: '#6b6b84',
-    whiteSpace: 'nowrap',
-  },
-
-  active: {
-    color: '#000000',
-    fontWeight: 600,
-    textDecoration: 'underline',
-  }
 }
 
 export default styles;
