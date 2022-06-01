@@ -7,7 +7,8 @@ const styles = {
     display: 'flex',
     padding: {
       xs: '140px 0',
-      md: '140px 64px 64px',
+      md: '140px 32px 64px',
+      lg: '140px 64px 64px',
     },
     backgroundImage: `url(${bgImage})`,
     backgroundPosition: 'top -75px right -180px',
@@ -15,7 +16,7 @@ const styles = {
   },
 
   titleWrapper: {
-    marginBottom: 5,
+    marginBottom: 8,
   },
 
   title: {

@@ -5,5 +5,13 @@ collectionType: corporate-insurance
 title: Cyber Risk Insurance
 image: /img/ci-iconv2.svg
 alt: Cyber Risk Insurance
-tags: [one, five]
+type: Business Parameters
+category: {
+  parentType: Business Parameters,
+  name: Function,
+}
+subcategories: {
+  parentCategory: Function,
+  list: [Call Center],
+}
 ---

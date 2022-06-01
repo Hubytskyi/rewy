@@ -3,44 +3,33 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import { Box } from '@mui/material';
 import PaperWrapper from '../../Common/paper';
 import styles from './styles';
+import CorporateInsuranceCategories from '../categories';
+import CorporateInsuranceFilter from '../filter';
 
 const CorporateInsuranceList = () => {
 
-  const {allMarkdownRemark} = useCorporateInsuranceQuery();
-  const [tags, setTags] = useState([]);
-  const [selectedTag, setSelectedTag] = useState('');
+    const {allMarkdownRemark} = useCorporateInsuranceQuery();
 
-  const allTags = allMarkdownRemark.edges
-    .map((markdownRemark) => markdownRemark.node.frontmatter.tags)
-    .reduce((acc, cur) => {
-      return [...acc, ...cur];
-    }, []);
+    const [categories, setCategories] = useState({});
 
-  const handleSelectedTag = (tag) => {
-    setSelectedTag(tag);
-  };
+    const handleChange = (value, category) => {
+      setCategories(prev => ({
+        ...prev,
+        [category]: value
+      }));
+    };
 
-  useEffect(() => {
-    setTags(allTags.filter((value, index, self) => self.indexOf(value) === index));
-  }, []);
+    const refreshFilter = () => {
+      setCategories({});
+    };
 
-  return (
-    <Box>
-      <Box sx={styles.tags}>
-        <Box sx={[styles.tag, selectedTag === '' && styles.active]} onClick={() => {
-          handleSelectedTag('');
-        }}>all</Box>
-        {tags.map((tag) => (
-          <Box
-            onClick={() => {
-              handleSelectedTag(tag);
-            }}
-            sx={[styles.tag, selectedTag === tag && styles.active]} key={tag}>{tag}</Box>
-        ))}
-      </Box>
-      <Box sx={styles.wrapper}>
-        {allMarkdownRemark?.edges?.map((item, i) => {
-            if (item.node.frontmatter.tags.includes(selectedTag)) {
+    return (
+      <Box sx={styles.section}>
+        <CorporateInsuranceFilter allMarkdownRemark={allMarkdownRemark} categories={categories}
+                                  refreshFilter={refreshFilter} handleChange={handleChange}/>
+        <Box sx={styles.wrapper}>
+          {allMarkdownRemark?.edges?.map((item, i) => {
+            if (Object.values(categories).every(el => item.node.frontmatter.subcategories.list.indexOf(el) !== -1)) {
               return (
                 <Box sx={styles.item}>
                   <Link to={item.node.frontmatter.path} key={i}>
@@ -49,21 +38,12 @@ const CorporateInsuranceList = () => {
                 </Box>
               );
             }
-            if (selectedTag === '') {
-              return (
-                <Box sx={styles.item}>
-                  <Link to={item.node.frontmatter.path} key={i} style={styles.item}>
-                    <PaperWrapper {...item.node.frontmatter} />
-                  </Link>
-                </Box>
-              );
-            }
-          }
-        )}
+          })}
+        </Box>
       </Box>
-    </Box>
-  );
-};
+    );
+  }
+;
 
 export default CorporateInsuranceList;
 
@@ -73,6 +53,9 @@ export const useCorporateInsuranceQuery = () => (
       allMarkdownRemark(
         filter: {frontmatter: {collectionType: {eq: "corporate-insurance"}}}
       ) {
+        group(field: frontmatter___type) {
+          fieldValue
+        }
         edges {
           node {
             frontmatter {
@@ -80,7 +63,9 @@ export const useCorporateInsuranceQuery = () => (
               image
               alt
               path
-              tags
+              subcategories {
+                list
+              }
             }
           }
         }

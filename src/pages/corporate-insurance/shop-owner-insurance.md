@@ -5,5 +5,13 @@ collectionType: corporate-insurance
 title: Shop Owner Insurance TEST
 image: /img/shop-iconv2.svg
 alt: Shop Owner Insurance TTT
-tags: [four]
+type: Tech Parameters
+category: {
+  parentType: Tech Parameters,
+  name: Tutorial,
+}
+subcategories: {
+  parentCategory: Tutorial,
+  list: [End to End],
+}
 ---
