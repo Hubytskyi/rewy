@@ -76,6 +76,8 @@ const StepTwo = ({ handleDialogOpen, errors, values, handleChange, setFieldValue
 
   const classes = useStyles()
 
+  const getLocation = (location) => typeof location === "object" ? `${location.name} (${location.state})` : location
+
   return (
     <Box>
       <FormTitle step={"2"} title={"Buying Group Health Insurance for the first time?"} />
@@ -186,9 +188,10 @@ const StepTwo = ({ handleDialogOpen, errors, values, handleChange, setFieldValue
                       multiple
                       id="locationUSA"
                       options={locationsUSA}
-                      getOptionLabel={(location) => `${location.name} (${location.state})`}
+                      getOptionLabel={getLocation}
                       onChange={(e, value) => {
-                        setFieldValue("locationUSA", value)
+                        const updatedValues = value.map(getLocation)
+                        setFieldValue("locationUSA", updatedValues)
                       }}
                       onFocus={() => setFieldError("locationUSA", "")}
                       name={"locationUSA"}
