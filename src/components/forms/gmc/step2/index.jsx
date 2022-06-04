@@ -113,6 +113,31 @@ const StepTwo = ({ handleDialogOpen, errors, values, handleChange, setFieldValue
               {errors.firstTime && <FormHelperText>{errors.firstTime}</FormHelperText>}
             </FormControl>
           </Box>
+          <Box mb={8}>
+            <Box mb={3}>
+              <Typography>Select states</Typography>
+            </Box>
+            <Autocomplete
+              multiple
+              id="locationUSA"
+              options={locationsUSA}
+              getOptionLabel={getLocation}
+              onChange={(e, value) => {
+                const updatedValues = value.map(getLocation)
+                setFieldValue("locationUSA", updatedValues)
+              }}
+              onFocus={() => setFieldError("locationUSA", "")}
+              name={"locationUSA"}
+              value={values.locationUSA || []}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="outlined"
+                  label="Locations"
+                />
+              )}
+            />
+          </Box>
           {values.firstTime === "Yes" && (
             <Box>
               <Box mb={5}>
@@ -122,7 +147,7 @@ const StepTwo = ({ handleDialogOpen, errors, values, handleChange, setFieldValue
                   onChange={handleChange}
                   className={classes.checkboxControl}
                 >
-                  <Box mb={5}>
+                  <Box mb={3}>
                     <Typography className={"subtitle"}>Select Sum Insured Type</Typography>
                   </Box>
                   <RadioGroup name="sumInsuredType" value={values.sumInsuredType}>
@@ -161,7 +186,7 @@ const StepTwo = ({ handleDialogOpen, errors, values, handleChange, setFieldValue
               {values.sumInsuredType === "Flat" && (
                 <Box mb={8}>
                   <Box mb={5}>
-                    <Box mb={5}>
+                    <Box mb={3}>
                       <Typography>How much sum insured do you want per employee?</Typography>
                     </Box>
                     <FormControl fullWidth>
@@ -179,31 +204,6 @@ const StepTwo = ({ handleDialogOpen, errors, values, handleChange, setFieldValue
                         ))}
                       </Select>
                     </FormControl>
-                  </Box>
-                  <Box mb={5}>
-                    <Box mb={5}>
-                      <Typography>Select state</Typography>
-                    </Box>
-                    <Autocomplete
-                      multiple
-                      id="locationUSA"
-                      options={locationsUSA}
-                      getOptionLabel={getLocation}
-                      onChange={(e, value) => {
-                        const updatedValues = value.map(getLocation)
-                        setFieldValue("locationUSA", updatedValues)
-                      }}
-                      onFocus={() => setFieldError("locationUSA", "")}
-                      name={"locationUSA"}
-                      value={values.locationUSA || []}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          variant="outlined"
-                          label="Locations"
-                        />
-                      )}
-                    />
                   </Box>
                   <Box className={classes.tryCalc}>
                     <Typography color={theme.palette.primary.dark} variant={"body2"}>Not sure about the sum
