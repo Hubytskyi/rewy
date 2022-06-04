@@ -7,6 +7,7 @@ const GMCSchemaStepTwo = Yup.object().shape({
     is: true,
     then: schema => schema.required('Please select one'),
   }),
+  locationUSA: Yup.array().required('Choose a states'),
 });
 
 export default GMCSchemaStepTwo;
