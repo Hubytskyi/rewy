@@ -179,7 +179,7 @@ const StepOne = ({errors, values, handleChange, setFieldValue, setFieldError}) =
               onChange={handleChange}
               className={classes.checkboxGroup}
             >
-              <Box mb={5}>
+              <Box mb={3}>
                 <Typography>Select No. of Employees in your organisation</Typography>
               </Box>
               <RadioGroup name="employees" value={values.employees}>

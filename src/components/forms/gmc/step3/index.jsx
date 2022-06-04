@@ -166,7 +166,7 @@ const StepThree = ({errors, values, handleChange, setFieldValue, setFieldError})
               onChange={handleChange}
               className={classes.checkboxControl}
             >
-              <Box mb={5}>
+              <Box mb={3}>
                 <Typography className={'overline'} variant={'h4'}>Select coverage type & enter details</Typography>
               </Box>
               <RadioGroup name="coverageType" value={values.coverageType}>
@@ -231,8 +231,8 @@ const StepThree = ({errors, values, handleChange, setFieldValue, setFieldError})
                 />
               </Box>
               <Box mb={5}>
-                <Box mb={2}>
-                  <Typography className={'overline'} variant={'h4'}>Edit Employee Count</Typography>
+                <Box mb={3}>
+                  <Typography className={'overline'}>Edit Employee Count</Typography>
                 </Box>
                 <Box className={classes.gridOfInputs}>
                   <TextField
@@ -275,7 +275,7 @@ const StepThree = ({errors, values, handleChange, setFieldValue, setFieldError})
               </Box>
               {values.coverageType !== 'Employee only' && (
                 <Box mb={5}>
-                  <Box mb={2}>
+                  <Box mb={3}>
                     <Typography className={'overline'} variant={'h4'}>Edit Spouse Count</Typography>
                   </Box>
                   <Box className={classes.gridOfInputs} mb={5}>
@@ -318,7 +318,7 @@ const StepThree = ({errors, values, handleChange, setFieldValue, setFieldError})
                   </Box>
                   {values.coverageType === 'Employee, Spouse, 2 Kids & Parents' && (
                     <Box mb={5}>
-                      <Box mb={2}>
+                      <Box mb={3}>
                         <Typography className={'overline'} variant={'h4'}>Edit Parents Count</Typography>
                       </Box>
                       <Box className={classes.gridOfInputs}>
@@ -362,7 +362,7 @@ const StepThree = ({errors, values, handleChange, setFieldValue, setFieldError})
                     </Box>
                   )}
                   <Box mb={8}>
-                    <Box mb={2}>
+                    <Box mb={3}>
                       <Typography className={'overline'} variant={'h4'}>Edit Kids Count</Typography>
                     </Box>
                     <TextField
