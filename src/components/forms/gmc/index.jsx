@@ -22,7 +22,6 @@ import GMCHelper from './helper';
 import { initialValues, initialValuesCalc } from '../../../constants/gmc-form.const';
 import bgTopRightImg from '../../../assets/images/right-top-bg.svg';
 import bgBottomLeftImg from '../../../assets/images/left-bottom-bg.svg';
-import sumInsuredList from '../../../constants/sum-insured.const';
 
 const useStyles = makeStyles({
   gmc: {
@@ -100,12 +99,11 @@ const useStyles = makeStyles({
   },
 });
 
-const GMCForm = (props) => {
+const GMCForm = () => {
 
   const classes = useStyles();
   const [data, setData] = useState(initialValues);
   const [dataCalc, setDataCalc] = useState(initialValuesCalc);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [currentCalcStep, setCurrentCalcStep] = useState(0);
@@ -171,7 +169,6 @@ const GMCForm = (props) => {
     })
       .then(() => {
         window.location.href = redirect();
-        setIsSubmitted(true);
       })
       .catch((error) => {
         throw error;
@@ -228,7 +225,8 @@ const GMCForm = (props) => {
   const steps = [
     <StepOne values={values} errors={errors} handleChange={handleChange} setFieldValue={setFieldValue}
              setFieldError={setFieldError} />,
-    <StepTwo handleDialogOpen={handleDialogOpen} values={values} errors={errors} handleChange={handleChange} />,
+    <StepTwo handleDialogOpen={handleDialogOpen} values={values} errors={errors} handleChange={handleChange}
+             setFieldValue={setFieldValue} setFieldError={setFieldError} />,
     <StepThree values={values} errors={errors} handleChange={handleChange} setFieldValue={setFieldValue}
                setFieldError={setFieldError} />,
   ];

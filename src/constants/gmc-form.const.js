@@ -3,6 +3,7 @@ export const initialValues = {
   phone: '',
   email: '',
   location: '',
+  locationUSA: [],
   employees: '',
   whatsapp: true,
   firstTime: '',
