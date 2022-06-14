@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react"
 import {
   Box,
   FormControl,
@@ -94,6 +94,36 @@ const StepOne = ({errors, values, handleChange, setFieldValue, setFieldError}) =
     }
   };
 
+  useEffect(() => {
+    // Creating a new function named fetchCityState.
+    // We could have this outside the useEffect but this
+    // makes it more readable.
+    const fetchCityState = async () => {
+      // We are using a try/catch block inside an async function
+      // which handles all the promises
+      try {
+        // Send a fetch request to the getCityState serverless function
+        const response = await fetch(
+          `/netlify/functions/getCityState?zipcode=${values.zip}`,
+          { headers: { accept: "application/json" } }
+        );
+        console.log('response: ', response)
+        // We assign data to the response we receive from the fetch
+        const data = await response.text();
+        console.log('data: ', data)
+        // Using a spread operator is an easy way to populate our city/state
+        // form
+        // The catch(e) will console.error any errors we receive
+      } catch (e) {
+          console.log(e);
+        }
+      }
+      // Run the above function
+      fetchCityState();
+      //The optional array below will run any time the zipcode
+      // field is updated
+    }, [values.zip]);
+
   return (
     <Box position={'relative'}>
       <FormTitle step={'1'} title={'Tell us about your Company '} />
@@ -144,6 +174,62 @@ const StepOne = ({errors, values, handleChange, setFieldValue, setFieldError}) =
               onFocus={() => setFieldError('email', '')}
             />
           </Box>
+
+
+          <Box mb={5}>
+            <TextField
+              label="ZIP"
+              name="zip"
+              type={'text'}
+              color={'secondary'}
+              value={values.zip || ''}
+              fullWidth
+              required
+              placeholder={'XXXXX'}
+              error={!!errors.zip}
+              helperText={errors.zip ? errors.zip : ''}
+              onChange={(event) => {
+                const {value} = event.target;
+                setFieldValue('zip', value.replace(/[^\d{5}]$/, "").substr(0, 5))
+              }}
+              onFocus={() => setFieldError('zip', '')}
+            />
+          </Box>
+          <Box mb={5}>
+            <TextField
+              label="Country"
+              name="country"
+              type={'text'}
+              color={'secondary'}
+              value={values.country || ''}
+              fullWidth
+              disabled
+            />
+          </Box>
+          <Box mb={5}>
+            <TextField
+              label="State"
+              name="state"
+              type={'text'}
+              color={'secondary'}
+              value={values.state || ''}
+              fullWidth
+              disabled
+            />
+          </Box>
+          <Box mb={5}>
+            <TextField
+              label="City"
+              name="city"
+              type={'text'}
+              color={'secondary'}
+              value={values.city || ''}
+              fullWidth
+              disabled
+            />
+          </Box>
+
+
           <Box mb={5}>
             <Autocomplete
               id="location"
