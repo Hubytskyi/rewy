@@ -5,7 +5,7 @@ export const initialValues = {
   location: '',
   city: '',
   state: '',
-  country: '',
+  county: '',
   zip: '',
   locationUSA: [],
   employees: '',
