@@ -262,9 +262,9 @@ const GMCForm = () => {
         <form
           noValidate
           onSubmit={handleSubmit}
+          data-netlify="true"
           name="gmc"
           method="post"
-          action={"nodemailer-server-pink.vercel.app/contact"}
         >
           {steps[currentStep]}
           <GMCHelper values={values} />
