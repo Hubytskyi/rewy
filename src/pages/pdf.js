@@ -1,18 +1,12 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, TextField, Button } from "@mui/material"
-import { PDFDownloadLink, StyleSheet } from "@react-pdf/renderer"
 import PDF from "../components/PDF"
-
-const styles = StyleSheet.create({
-  button: {
-    width: "100%",
-  },
-})
 
 const Pdf = () => {
 
   const [pdfData, setPdfData] = useState({})
   const [image, setImage] = useState(null)
+  const [client, setClient] = useState(false)
 
   const {
     pdfFirstName,
@@ -34,6 +28,10 @@ const Pdf = () => {
       [event.target.name]: event.target.value
     }))
   }
+
+  useEffect(() => {
+    setClient(true)
+  }, [])
 
   return (
     <Box sx={{
@@ -83,15 +81,10 @@ const Pdf = () => {
               Download photo
             </Button>
           </Box>
-          <Box sx={{ flexBasis: "100%", margin: 1 }}>
-          <PDFDownloadLink style={styles.button} document={<PDF /> }>
-            <Button variant="outlined">Download PDF</Button>
-          </PDFDownloadLink>
-          </Box>
         </Box>
       </Box>
       <Box sx={{ flexBasis: "49%", borderRadius: 1, backgroundColor: "#ffffff", height: "100%" }}>
-        <PDF {...pdfData} image={image} />
+        {client && <PDF {...pdfData} image={image} />}
       </Box>
     </Box>
   )
