@@ -39,7 +39,7 @@ const PDF = ({
                pdfDescription,
                image
              }) => (
-  <PDFViewer style={styles.viewer} showToolbar={false}>
+  <PDFViewer style={styles.viewer}>
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.image}>
