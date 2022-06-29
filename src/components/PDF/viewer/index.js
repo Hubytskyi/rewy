@@ -13,7 +13,7 @@ const PdfViewer = ({
                      pdfProfessionalSummary
                    }) => (
   <Box sx={styles.wrapper}>
-    <PDFViewer style={pdfStyles.viewer}>
+    <PDFViewer style={pdfStyles.viewer} showToolbar={false}>
       <Document>
         <Page size="A4" style={pdfStyles.page}>
           <View style={pdfStyles.image}>

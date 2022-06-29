@@ -1,7 +1,11 @@
 import React from "react"
-import { Box, Typography, TextField } from "@mui/material"
+import { Box, Typography, TextField, Button } from "@mui/material"
 import FileUploadIcon from "@mui/icons-material/FileUpload"
 import styles from "./styles.js"
+import html2canvas from "html2canvas"
+import jsPDF from "jspdf"
+import { Link } from "gatsby"
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 const PdfContent = ({
                       pdfFirstName,
@@ -14,8 +18,29 @@ const PdfContent = ({
                       pdfProfessionalSummary
                     }) => {
 
+  const printDocument = () => {
+    const input = document.getElementById("divToPrint")
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL("image/png")
+        const pdf = new jsPDF()
+        const imgProps= pdf.getImageProperties(canvas);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        const randomName = Math.floor(Math.random() * 10000000)
+        pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight)
+        pdf.save(`${randomName}.pdf`)
+      })
+  }
+
   return (
     <Box sx={styles.content}>
+      <Box sx={{mb: 2}}>
+        <Link to={'/pdf'} style={{display: 'inline-flex', alignItems: 'center'}}>
+          <ChevronLeftIcon />
+          <Typography varinat={'caption'}>Back to templates</Typography>
+        </Link>
+      </Box>
       <Typography sx={styles.title} variant={"h5"}>Generate your PDF</Typography>
       <Box sx={styles.wrapper}>
         <Box sx={styles.section}>
@@ -60,6 +85,10 @@ const PdfContent = ({
           </Box>
         </Box>
 
+      </Box>
+
+      <Box className="mb5">
+        <Button variant="contained" onClick={printDocument}>Print</Button>
       </Box>
     </Box>
   )
