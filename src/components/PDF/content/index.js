@@ -5,40 +5,78 @@ import styles from "./styles.js"
 import html2canvas from "html2canvas"
 import jsPDF from "jspdf"
 import { Link } from "gatsby"
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
+import { saveAs } from "file-saver"
+import { Document, ImageRun, Packer, Paragraph } from "docx"
 
 const PdfContent = ({
                       pdfFirstName,
                       pdfLastName,
                       pdfEmail,
                       pdfPhone,
+                      image,
                       pdfDescription,
                       onImageChange,
                       onInputsChange,
                       pdfProfessionalSummary
                     }) => {
 
-  const printDocument = () => {
+  const printPDF = () => {
     const input = document.getElementById("divToPrint")
     html2canvas(input)
       .then((canvas) => {
         const imgData = canvas.toDataURL("image/png")
         const pdf = new jsPDF()
-        const imgProps= pdf.getImageProperties(canvas);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        const imgProps = pdf.getImageProperties(canvas)
+        const pdfWidth = pdf.internal.pageSize.getWidth()
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width
         const randomName = Math.floor(Math.random() * 10000000)
         pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight)
         pdf.save(`${randomName}.pdf`)
       })
   }
 
+  const printDOC = async () => {
+    const blob = await fetch(image).then(r => r.blob())
+
+    const doc = new Document({
+      sections: [
+        {
+          children: [
+            new Paragraph({
+              children: [
+                new ImageRun({
+                  data: blob,
+                  transformation: {
+                    width: 100,
+                    height: 100
+                  }
+                })
+              ]
+            }),
+            new Paragraph(`First Name: ${pdfFirstName}`),
+            new Paragraph(`Last Name: ${pdfLastName}`),
+            new Paragraph(`Email: ${pdfEmail}`),
+            new Paragraph(`Phone: ${pdfPhone}`),
+            new Paragraph(`About: ${pdfDescription}`),
+            new Paragraph(`Professional Summary: ${pdfProfessionalSummary}`),
+          ]
+        }
+      ]
+    })
+
+    Packer.toBlob(doc).then(blob => {
+      const randomName = Math.floor(Math.random() * 10000000)
+      saveAs(blob, `${randomName}.docx`)
+    })
+  }
+
   return (
     <Box sx={styles.content}>
-      <Box sx={{mb: 2}}>
-        <Link to={'/pdf'} style={{display: 'inline-flex', alignItems: 'center'}}>
+      <Box sx={{ mb: 2 }}>
+        <Link to={"/pdf"} style={{ display: "inline-flex", alignItems: "center" }}>
           <ChevronLeftIcon />
-          <Typography varinat={'caption'}>Back to templates</Typography>
+          <Typography varinat={"caption"}>Back to templates</Typography>
         </Link>
       </Box>
       <Typography sx={styles.title} variant={"h5"}>Generate your PDF</Typography>
@@ -88,7 +126,8 @@ const PdfContent = ({
       </Box>
 
       <Box className="mb5">
-        <Button variant="contained" onClick={printDocument}>Print</Button>
+        <Button variant="contained" onClick={printPDF}>Print PDF</Button>
+        <Button variant="contained" onClick={printDOC}>Print DOC</Button>
       </Box>
     </Box>
   )

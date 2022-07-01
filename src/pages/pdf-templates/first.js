@@ -40,7 +40,7 @@ const Pdf = () => {
       height: "100vh",
       justifyContent: "space-between"
     }}>
-      <PdfContent {...pdfData} onImageChange={onImageChange} onInputsChange={onInputsChange} />
+      <PdfContent {...pdfData} image={image} onImageChange={onImageChange} onInputsChange={onInputsChange} />
       <Viewer2 {...pdfData} image={image} />
     </Box>
   )
