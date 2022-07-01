@@ -16,3 +16,7 @@ parentCategory: Function,
 }
 
 ---
+
+<div>
+  Hello! <a href="/GMC">click on me</a>
+</div>
